@@ -17,11 +17,6 @@
 # Debugger Files
 *.pdb
 
-# Compiled Dynamic libraries
-*.so
-*.dylib
-*.dll
-
 # Fortran module files
 *.mod
 *.smod
@@ -39,3 +34,41 @@
 
 # debug information files
 *.dwo
+
+# Editors
+.vscode
+.project
+.zed
+
+# Lanugage server config. Includes system paths, therefore gitignore'd
+.clangd
+
+# Build directory
+build
+
+# C++ objects and libs
+*.a
+*.la
+*.lai
+*.so
+*.so.*
+*.dll
+*.dylib
+
+
+# CMake
+
+CMakeLists.txt.user
+CMakeCache.txt
+CMakeFiles
+CMakeScripts
+Testing
+Makefile
+cmake_install.cmake
+install_manifest.txt
+compile_commands.json
+CTestTestfile.cmake
+_deps
+CMakeUserPresets.json
+
+.cache
