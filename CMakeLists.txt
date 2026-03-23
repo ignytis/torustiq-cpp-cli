@@ -17,20 +17,13 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "build")
 # Helps with debugging
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
-# cmake_policy(SET CMP0135 NEW)
-
-# find_package(wxWidgets COMPONENTS stc aui core base REQUIRED)
 find_package(CLI11 REQUIRED)
 
 file(GLOB_RECURSE SOURCES "src/*.cpp")
 add_executable(${APP_NAME_LOWERCASE} ${SOURCES})
 
-# if(WIN32)
-#     target_sources(${APP_NAME_LOWERCASE} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src/resource.rc)
-# endif()
 
 target_include_directories(${APP_NAME_LOWERCASE} PRIVATE src)
-# target_link_libraries(${APP_NAME_LOWERCASE} PRIVATE wxWidgets::wxWidgets nlohmann_json::nlohmann_json)
 
 add_compile_definitions(APP_NAME="${APP_NAME}")
 add_compile_definitions(APP_VERSION="${APP_VERSION}")

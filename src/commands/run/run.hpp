@@ -9,14 +9,16 @@ namespace TorustiqCli {
 namespace Commands {
 namespace Run {
 
-/// Command to execute a pipeline
+/**
+ * This command runs a specified pipeline
+ */
 class RunCommand : public AbstractCommand {
    private:
-    std::string config_path;
+    std::string module_dir;
     std::string pipeline_path;
 
    public:
-    RunCommand(std::string config_path, std::string pipeline_path);
+    RunCommand(std::string module_dir, std::string pipeline_path);
     void run();
 };
 
