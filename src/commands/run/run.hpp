@@ -18,7 +18,7 @@ class RunCommand : public AbstractCommand {
     std::string pipeline_path;
 
    public:
-    RunCommand(std::string module_dir, std::string pipeline_path);
+    RunCommand(std::string pipeline_path);
     void run();
 };
 

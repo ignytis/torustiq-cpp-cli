@@ -30,7 +30,6 @@
 ### CMakeLists.txt
 
 - Keep only one `CMakeLists.txt` file in the root directory
-- Order alphabetically the source file paths in `CMakeLists.txt`
 
 ### `#include` statements
 

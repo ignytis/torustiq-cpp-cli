@@ -1,5 +1,5 @@
 {
-    "name": "torustiq-cli",
+    "name": "torustiq",
     "version": "0.1.0",
     "description": "Data pipeline orchestration tool"
 }
