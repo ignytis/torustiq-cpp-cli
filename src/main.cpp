@@ -1,19 +1,21 @@
+#include <yaml-cpp/yaml.h>
+
 #include <CLI/CLI.hpp>
 
 #include "commands/abstract.hpp"
 #include "commands/run/run.hpp"
+#include "config/configuration.hpp"
 #include "defs.hpp"
 #include "system/env.hpp"
 
 using namespace TorustiqCli::Commands;
 using namespace TorustiqCli::Commands::Run;
+using namespace TorustiqCli::Config;
 using namespace TorustiqCli::System;
 
 using namespace std;
 
 int main(int argc, char* argv[]) {
-    string torustiqConfigPath = getEnv("TORUSTIQ_CONFIG", getAppHome(APP_NAME));
-
     CLI::App app{APP_DESCRIPTION};
 
     CLI::App* sub_run = app.add_subcommand("run", "Runs a pipeline");
@@ -21,14 +23,18 @@ int main(int argc, char* argv[]) {
     sub_run->add_option("pipeline-path", sub_run_option_pipeline_path,
                         "Path to pipeline file e.g. mypipeline.yaml");
 
-    AbstractCommand* cmd;
-
     CLI11_PARSE(app, argc, argv);
 
+    AbstractCommand* cmd;
     if (sub_run->parsed()) {
-        cmd = new RunCommand(sub_run_option_pipeline_path);
-        cmd->run();
+        string torustiqConfigPath =
+            getEnv("TORUSTIQ_CONFIG", getAppHome(APP_NAME) + "/config.yaml");
+        YAML::Node configYaml = YAML::LoadFile(torustiqConfigPath);
+        Configuration config = configYaml.as<Configuration>();
+
+        cmd = new RunCommand(&config, sub_run_option_pipeline_path);
     }
+    cmd->run();
 
     return 0;
 }

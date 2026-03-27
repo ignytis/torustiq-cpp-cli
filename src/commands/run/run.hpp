@@ -3,22 +3,25 @@
 
 #include <string>
 
+#include "../../config/configuration.hpp"
 #include "../abstract.hpp"
 
 namespace TorustiqCli {
 namespace Commands {
 namespace Run {
 
+using namespace TorustiqCli::Config;
+
 /**
  * This command runs a specified pipeline
  */
 class RunCommand : public AbstractCommand {
    private:
-    std::string module_dir;
+    Configuration* config;
     std::string pipeline_path;
 
    public:
-    RunCommand(std::string pipeline_path);
+    RunCommand(Configuration* config, std::string pipeline_path);
     void run();
 };
 
