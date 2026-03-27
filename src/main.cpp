@@ -25,16 +25,15 @@ int main(int argc, char* argv[]) {
 
     CLI11_PARSE(app, argc, argv);
 
-    AbstractCommand* cmd;
     if (sub_run->parsed()) {
         string torustiqConfigPath =
             getEnv("TORUSTIQ_CONFIG", getAppHome(APP_NAME) + "/config.yaml");
         YAML::Node configYaml = YAML::LoadFile(torustiqConfigPath);
         Configuration config = configYaml.as<Configuration>();
 
-        cmd = new RunCommand(&config, sub_run_option_pipeline_path);
+        RunCommand cmd(&config, sub_run_option_pipeline_path);
+        cmd.run();
     }
-    cmd->run();
 
     return 0;
 }
