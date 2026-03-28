@@ -23,7 +23,7 @@ void RunCommand::run() {
 
     PipelineDefinition pipeDef =
         YAML::LoadFile(pipeline_path).as<PipelineDefinition>();
-    Pipeline pipeline = Pipeline(pipeDef);
+    Pipeline pipeline = Pipeline(pipeDef, config->moduleDir);
 
     cout << "Pipeline name: " << pipeDef.name << endl;
     pipeline.start();

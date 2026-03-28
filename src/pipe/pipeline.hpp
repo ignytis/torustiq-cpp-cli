@@ -1,6 +1,7 @@
 #ifndef _TORUSTIQ_CLI_PIPE_PIPELINE_H_
 #define _TORUSTIQ_CLI_PIPE_PIPELINE_H_
 
+#include <string>
 #include <vector>
 
 #include "../typedefs/pipeline/pipeline.hpp"
@@ -14,8 +15,10 @@ namespace Pipe {
 class Pipeline {
    public:
     /** Constructs a pipeline from a pipeline definition, instantiating stages
-     * by position: first = source, last = sink, middle = processors */
-    explicit Pipeline(const Typedefs::Pipeline::PipelineDefinition& def);
+     * by position: first = source, last = sink, middle = processors.
+     * @param module_dir Path to directory containing plugin libraries to load */
+    Pipeline(const Typedefs::Pipeline::PipelineDefinition& def,
+             const std::string& module_dir);
     void start();
 
    private:

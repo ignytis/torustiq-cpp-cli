@@ -17,6 +17,12 @@ using LibHandle = void*;
 namespace TorustiqCli {
 namespace System {
 
+#ifdef _WIN32
+constexpr const char* kLibExt = ".dll";
+#else
+constexpr const char* kLibExt = ".so";
+#endif
+
 /**
  * A cross-platform wrapper for library loading
  *
