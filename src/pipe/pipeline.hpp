@@ -3,6 +3,7 @@
 
 #include <vector>
 
+#include "../typedefs/pipeline/pipeline.hpp"
 #include "stages/abstract_stage.hpp"
 
 namespace TorustiqCli {
@@ -11,6 +12,12 @@ namespace Pipe {
 /** A pipeline containing a linear sequence of stages: one source, zero or more
  * processors, one sink */
 class Pipeline {
+   public:
+    /** Constructs a pipeline from a pipeline definition, instantiating stages
+     * by position: first = source, last = sink, middle = processors */
+    explicit Pipeline(const Typedefs::Pipeline::PipelineDefinition& def);
+    void start();
+
    private:
     std::vector<Stages::AbstractStage*> stages_;
 };
