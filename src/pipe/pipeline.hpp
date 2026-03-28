@@ -8,10 +8,11 @@
 namespace TorustiqCli {
 namespace Pipe {
 
-/** A pipeline containing a linear sequence of stages: one source, zero or more processors, one sink */
+/** A pipeline containing a linear sequence of stages: one source, zero or more
+ * processors, one sink */
 class Pipeline {
- private:
-  std::vector<Stages::AbstractStage*> stages_;
+   private:
+    std::vector<Stages::AbstractStage*> stages_;
 };
 
 }  // namespace Pipe

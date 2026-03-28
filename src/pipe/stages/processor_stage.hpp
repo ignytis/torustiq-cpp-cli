@@ -7,7 +7,8 @@ namespace TorustiqCli {
 namespace Pipe {
 namespace Stages {
 
-/** A processor stage: accepts data from the previous stage, transforms it, and passes it further */
+/** A processor stage: accepts data from the previous stage, transforms it, and
+ * passes it further */
 class ProcessorStage : public AbstractStage {};
 
 }  // namespace Stages

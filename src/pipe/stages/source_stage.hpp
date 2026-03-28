@@ -7,7 +7,8 @@ namespace TorustiqCli {
 namespace Pipe {
 namespace Stages {
 
-/** A source stage: accepts an incoming payload and forwards it to the next stage */
+/** A source stage: accepts an incoming payload and forwards it to the next
+ * stage */
 class SourceStage : public AbstractStage {};
 
 }  // namespace Stages

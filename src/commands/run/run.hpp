@@ -3,7 +3,7 @@
 
 #include <string>
 
-#include "../../config/configuration.hpp"
+#include "../../typedefs/configuration.hpp"
 #include "../abstract.hpp"
 
 namespace TorustiqCli {

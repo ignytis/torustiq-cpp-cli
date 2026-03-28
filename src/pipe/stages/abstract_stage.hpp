@@ -7,8 +7,8 @@ namespace Stages {
 
 /** Abstract base class for all pipeline stages */
 class AbstractStage {
- public:
-  virtual ~AbstractStage() = default;
+   public:
+    virtual ~AbstractStage() = default;
 };
 
 }  // namespace Stages

@@ -4,9 +4,9 @@
 
 #include "commands/abstract.hpp"
 #include "commands/run/run.hpp"
-#include "config/configuration.hpp"
 #include "defs.hpp"
 #include "system/env.hpp"
+#include "typedefs/configuration.hpp"
 
 using namespace TorustiqCli::Commands;
 using namespace TorustiqCli::Commands::Run;

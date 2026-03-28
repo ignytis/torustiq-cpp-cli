@@ -1,0 +1,41 @@
+#ifndef _TORUSTIQ_CLI_TYPEDEFS_CONFIGURATION_H_
+#define _TORUSTIQ_CLI_TYPEDEFS_CONFIGURATION_H_
+
+#include <yaml-cpp/yaml.h>
+
+#include <string>
+
+namespace TorustiqCli {
+namespace Config {
+
+/** Main configuration class */
+class Configuration {
+   public:
+    std::string moduleDir;
+};
+
+}  // namespace Config
+}  // namespace TorustiqCli
+
+namespace YAML {
+using namespace TorustiqCli::Config;
+
+template <>
+struct convert<Configuration> {
+    static Node encode(const Configuration& cfg) {
+        Node node;
+        node["module_dir"] = cfg.moduleDir;
+        return node;
+    }
+
+    static bool decode(const Node& node, Configuration& cfg) {
+        if (!node.IsMap()) {
+            return false;
+        }
+        cfg.moduleDir = node["module_dir"].as<std::string>();
+        return true;
+    }
+};
+}  // namespace YAML
+
+#endif  // _TORUSTIQ_CLI_TYPEDEFS_CONFIGURATION_H_

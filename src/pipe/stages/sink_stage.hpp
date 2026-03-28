@@ -7,7 +7,8 @@ namespace TorustiqCli {
 namespace Pipe {
 namespace Stages {
 
-/** A sink stage: accepts input from the previous stage and outputs data without passing it further */
+/** A sink stage: accepts input from the previous stage and outputs data without
+ * passing it further */
 class SinkStage : public AbstractStage {};
 
 }  // namespace Stages

@@ -1,0 +1,9 @@
+# Just sends back whatever is submitted to stdin
+name: An example of pipeline which echoes the standard input
+stages:
+- name: Stdin Source
+  handler: stdio
+- name: Stdout Destination
+  handler: stdio
+  config:
+    format: "echo: %R"
