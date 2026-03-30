@@ -1,37 +1,35 @@
-#ifndef _TORUSTIQ_CLI_CONFIGURATION_H_
-#define _TORUSTIQ_CLI_CONFIGURATION_H_
+#ifndef _TORUSTIQ_CLI_TYPEDEFS_CONFIGURATION_H_
+#define _TORUSTIQ_CLI_TYPEDEFS_CONFIGURATION_H_
 
 #include <yaml-cpp/yaml.h>
 
 #include <string>
 
-using namespace std;
-
 namespace TorustiqCli {
-namespace Config {
+namespace Typedefs {
+namespace Configuration {
 
 /** Main configuration class */
 class Configuration {
    public:
-    string moduleDir;
+    std::string moduleDir;
 };
 
-}  // namespace Config
+}  // namespace Configuration
+}  // namespace Typedefs
 }  // namespace TorustiqCli
 
 namespace YAML {
-using namespace TorustiqCli::Config;
+using namespace TorustiqCli::Typedefs::Configuration;
 
 template <>
 struct convert<Configuration> {
-    // From C++ to YAML
     static Node encode(const Configuration& cfg) {
         Node node;
         node["module_dir"] = cfg.moduleDir;
         return node;
     }
 
-    // From YAML to C++
     static bool decode(const Node& node, Configuration& cfg) {
         if (!node.IsMap()) {
             return false;
@@ -42,4 +40,4 @@ struct convert<Configuration> {
 };
 }  // namespace YAML
 
-#endif
+#endif  // _TORUSTIQ_CLI_TYPEDEFS_CONFIGURATION_H_

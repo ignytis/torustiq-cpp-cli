@@ -12,7 +12,7 @@ class AbstractStage {
 };
 
 }  // namespace Stages
-}  // namespace Pipe
+}  // namespace Pipeline
 }  // namespace TorustiqCli
 
 #endif  // _TORUSTIQ_CLI_PIPE_STAGES_ABSTRACT_STAGE_H_

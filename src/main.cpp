@@ -6,14 +6,14 @@
 #include "commands/run/run.hpp"
 #include "defs.hpp"
 #include "system/env.hpp"
-#include "typedefs/configuration.hpp"
+#include "typedefs/configuration/configuration.hpp"
 
-using namespace TorustiqCli::Commands;
-using namespace TorustiqCli::Commands::Run;
-using namespace TorustiqCli::Config;
 using namespace TorustiqCli::System;
 
 using namespace std;
+
+using TorustiqCli::Commands::Run::RunCommand;
+using TorustiqCli::Typedefs::Configuration::Configuration;
 
 int main(int argc, char* argv[]) {
     CLI::App app{APP_DESCRIPTION};

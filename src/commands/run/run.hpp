@@ -3,14 +3,14 @@
 
 #include <string>
 
-#include "../../typedefs/configuration.hpp"
+#include "../../typedefs/configuration/configuration.hpp"
 #include "../abstract.hpp"
 
 namespace TorustiqCli {
 namespace Commands {
 namespace Run {
 
-using namespace TorustiqCli::Config;
+using TorustiqCli::Typedefs::Configuration::Configuration;
 
 /**
  * This command runs a specified pipeline

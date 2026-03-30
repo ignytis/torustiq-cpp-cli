@@ -10,8 +10,8 @@
 using namespace std;
 
 using TorustiqCli::Commands::Run::RunCommand;
-using TorustiqCli::Typedefs::Pipeline::PipelineDefinition;
 using TorustiqCli::Pipeline::Pipeline;
+using TorustiqCli::Typedefs::Pipeline::PipelineDefinition;
 
 RunCommand::RunCommand(Configuration* config, string pipeline_path)
     : config(config), pipeline_path(pipeline_path) {}
@@ -22,7 +22,8 @@ void RunCommand::run() {
 
     PipelineDefinition pipeDef =
         YAML::LoadFile(pipeline_path).as<PipelineDefinition>();
-    Pipeline::Pipeline pipeline = Pipeline::Pipeline(pipeDef, config->moduleDir);
+    Pipeline::Pipeline pipeline =
+        Pipeline::Pipeline(pipeDef, config->moduleDir);
 
     cout << "Pipeline name: " << pipeDef.name << endl;
     pipeline.start();

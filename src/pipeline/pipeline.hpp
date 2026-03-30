@@ -35,7 +35,7 @@ class Pipeline {
     std::vector<Stages::AbstractStage*> stages;
 };
 
-}  // namespace Pipe
+}  // namespace Pipeline
 }  // namespace TorustiqCli
 
 #endif  // _TORUSTIQ_CLI_PIPE_PIPELINE_H_
