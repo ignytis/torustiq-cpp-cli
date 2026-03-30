@@ -16,13 +16,23 @@ class Pipeline {
    public:
     /** Constructs a pipeline from a pipeline definition, instantiating stages
      * by position: first = source, last = sink, middle = processors.
-     * @param module_dir Path to directory containing plugin libraries to load */
+     * @param module_dir Path to directory containing plugin libraries to load
+     */
     Pipeline(const Typedefs::Pipeline::PipelineDefinition& def,
              const std::string& module_dir);
+
+    /**
+     * Initializes stages by calling the initialization method in for each stage
+     */
+    void initStages();
+
+    /**
+     * Starts a pipeline
+     */
     void start();
 
    private:
-    std::vector<Stages::AbstractStage*> stages_;
+    std::vector<Stages::AbstractStage*> stages;
 };
 
 }  // namespace Pipe
