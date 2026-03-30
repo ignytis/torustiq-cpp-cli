@@ -2,7 +2,7 @@
 #define _TORUSTIQ_CLI_PIPE_STAGES_ABSTRACT_STAGE_H_
 
 namespace TorustiqCli {
-namespace Pipe {
+namespace Pipeline {
 namespace Stages {
 
 /** Abstract base class for all pipeline stages */

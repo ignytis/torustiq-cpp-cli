@@ -4,7 +4,7 @@
 #include "abstract_stage.hpp"
 
 namespace TorustiqCli {
-namespace Pipe {
+namespace Pipeline {
 namespace Stages {
 
 /** A source stage: accepts an incoming payload and forwards it to the next

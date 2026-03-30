@@ -4,7 +4,7 @@
 #include "abstract_stage.hpp"
 
 namespace TorustiqCli {
-namespace Pipe {
+namespace Pipeline {
 namespace Stages {
 
 /** A processor stage: accepts data from the previous stage, transforms it, and

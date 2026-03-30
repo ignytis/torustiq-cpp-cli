@@ -10,7 +10,7 @@
 #include "stages/sink_stage.hpp"
 #include "stages/source_stage.hpp"
 
-using namespace TorustiqCli::Pipe;
+using namespace TorustiqCli::Pipeline;
 using namespace TorustiqCli::System;
 using namespace TorustiqCli::Typedefs::Pipeline;
 

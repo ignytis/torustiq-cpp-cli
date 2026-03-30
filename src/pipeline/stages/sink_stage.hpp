@@ -4,7 +4,7 @@
 #include "abstract_stage.hpp"
 
 namespace TorustiqCli {
-namespace Pipe {
+namespace Pipeline {
 namespace Stages {
 
 /** A sink stage: accepts input from the previous stage and outputs data without

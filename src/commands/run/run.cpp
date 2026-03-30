@@ -4,15 +4,14 @@
 
 #include <iostream>
 
-#include "../../pipe/pipeline.hpp"
+#include "../../pipeline/pipeline.hpp"
 #include "../../typedefs/pipeline/pipeline.hpp"
 
 using namespace std;
 
-using namespace TorustiqCli::Commands::Run;
-using namespace TorustiqCli::Config;
-using namespace TorustiqCli::Typedefs::Pipeline;
-using namespace TorustiqCli::Pipe;
+using TorustiqCli::Commands::Run::RunCommand;
+using TorustiqCli::Typedefs::Pipeline::PipelineDefinition;
+using TorustiqCli::Pipeline::Pipeline;
 
 RunCommand::RunCommand(Configuration* config, string pipeline_path)
     : config(config), pipeline_path(pipeline_path) {}
@@ -23,7 +22,7 @@ void RunCommand::run() {
 
     PipelineDefinition pipeDef =
         YAML::LoadFile(pipeline_path).as<PipelineDefinition>();
-    Pipeline pipeline = Pipeline(pipeDef, config->moduleDir);
+    Pipeline::Pipeline pipeline = Pipeline::Pipeline(pipeDef, config->moduleDir);
 
     cout << "Pipeline name: " << pipeDef.name << endl;
     pipeline.start();

@@ -8,7 +8,7 @@
 #include "stages/abstract_stage.hpp"
 
 namespace TorustiqCli {
-namespace Pipe {
+namespace Pipeline {
 
 /** A pipeline containing a linear sequence of stages: one source, zero or more
  * processors, one sink */
