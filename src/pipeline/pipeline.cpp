@@ -18,8 +18,7 @@ using namespace TorustiqCli::Pipeline;
 using namespace TorustiqCli::System;
 using namespace TorustiqCli::Typedefs::Pipeline;
 
-Pipeline::Pipeline(const PipelineDefinition& def, const string& module_dir)
-    : definition(def) {
+Pipeline::Pipeline(const PipelineDefinition& def, const string& module_dir) {
     size_t count = def.stages.size();
     if (count < 2) {
         throw std::invalid_argument(

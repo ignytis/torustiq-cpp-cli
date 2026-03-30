@@ -38,7 +38,6 @@ class Pipeline {
     void start();
 
    private:
-    Typedefs::Pipeline::PipelineDefinition definition;
     vector<Stages::AbstractStage*> stages;
 };
 
