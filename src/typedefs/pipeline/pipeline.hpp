@@ -16,7 +16,7 @@ namespace Pipeline {
 class PipelineDefinition {
    public:
     std::string name;
-    std::vector<PipelineStage> stages;
+    std::vector<PipelineStageDefinition> stages;
 };
 
 }  // namespace Pipeline
@@ -31,7 +31,7 @@ struct convert<PipelineDefinition> {
     static Node encode(const PipelineDefinition& pipeline) {
         Node node;
         node["name"] = pipeline.name;
-        for (const PipelineStage& stage : pipeline.stages) {
+        for (const PipelineStageDefinition& stage : pipeline.stages) {
             node["stages"].push_back(stage);
         }
         return node;
@@ -43,7 +43,8 @@ struct convert<PipelineDefinition> {
         }
         pipeline.name = node["name"].as<std::string>();
         if (node["stages"]) {
-            pipeline.stages = node["stages"].as<std::vector<PipelineStage>>();
+            pipeline.stages =
+                node["stages"].as<std::vector<PipelineStageDefinition>>();
         }
         return true;
     }

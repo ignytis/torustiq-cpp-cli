@@ -9,7 +9,12 @@ namespace Stages {
 
 /** A source stage: accepts an incoming payload and forwards it to the next
  * stage */
-class SourceStage : public AbstractStage {};
+class SourceStage : public AbstractStage {
+   public:
+    explicit SourceStage(
+        const TorustiqCli::Typedefs::Pipeline::PipelineStageDefinition& def)
+        : AbstractStage(def) {}
+};
 
 }  // namespace Stages
 }  // namespace Pipeline

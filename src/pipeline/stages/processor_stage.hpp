@@ -9,7 +9,12 @@ namespace Stages {
 
 /** A processor stage: accepts data from the previous stage, transforms it, and
  * passes it further */
-class ProcessorStage : public AbstractStage {};
+class ProcessorStage : public AbstractStage {
+   public:
+    explicit ProcessorStage(
+        const TorustiqCli::Typedefs::Pipeline::PipelineStageDefinition& def)
+        : AbstractStage(def) {}
+};
 
 }  // namespace Stages
 }  // namespace Pipeline

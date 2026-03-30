@@ -2,10 +2,13 @@
 #define _TORUSTIQ_CLI_PIPE_PIPELINE_H_
 
 #include <string>
+#include <unordered_set>
 #include <vector>
 
 #include "../typedefs/pipeline/pipeline.hpp"
 #include "stages/abstract_stage.hpp"
+
+using namespace std;
 
 namespace TorustiqCli {
 namespace Pipeline {
@@ -19,7 +22,10 @@ class Pipeline {
      * @param module_dir Path to directory containing plugin libraries to load
      */
     Pipeline(const Typedefs::Pipeline::PipelineDefinition& def,
-             const std::string& module_dir);
+             const string& module_dir);
+
+    /** Returns a set of handlers which are in use by pipeline */
+    unordered_set<string> getHandlersInUse();
 
     /**
      * Initializes stages by calling the initialization method in for each stage
@@ -32,7 +38,8 @@ class Pipeline {
     void start();
 
    private:
-    std::vector<Stages::AbstractStage*> stages;
+    Typedefs::Pipeline::PipelineDefinition definition;
+    vector<Stages::AbstractStage*> stages;
 };
 
 }  // namespace Pipeline

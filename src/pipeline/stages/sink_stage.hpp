@@ -9,7 +9,12 @@ namespace Stages {
 
 /** A sink stage: accepts input from the previous stage and outputs data without
  * passing it further */
-class SinkStage : public AbstractStage {};
+class SinkStage : public AbstractStage {
+   public:
+    explicit SinkStage(
+        const TorustiqCli::Typedefs::Pipeline::PipelineStageDefinition& def)
+        : AbstractStage(def) {}
+};
 
 }  // namespace Stages
 }  // namespace Pipeline

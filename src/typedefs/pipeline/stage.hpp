@@ -11,7 +11,7 @@ namespace Typedefs {
 namespace Pipeline {
 
 /** Represents a single stage in a pipeline definition */
-class PipelineStage {
+class PipelineStageDefinition {
    public:
     std::string name;
     std::string handler;
@@ -26,8 +26,8 @@ namespace YAML {
 using namespace TorustiqCli::Typedefs::Pipeline;
 
 template <>
-struct convert<PipelineStage> {
-    static Node encode(const PipelineStage& stage) {
+struct convert<PipelineStageDefinition> {
+    static Node encode(const PipelineStageDefinition& stage) {
         Node node;
         node["name"] = stage.name;
         node["handler"] = stage.handler;
@@ -38,7 +38,7 @@ struct convert<PipelineStage> {
         return node;
     }
 
-    static bool decode(const Node& node, PipelineStage& stage) {
+    static bool decode(const Node& node, PipelineStageDefinition& stage) {
         if (!node.IsMap()) {
             return false;
         }

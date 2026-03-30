@@ -21,11 +21,15 @@
 - Prefer ternary operators instead of if-else blocks with single statements
 - Return early if the whole remaining code inside function is if-else statement
 - Prefer explicit type declaration over `auto` keyword
+- Format code by invocation of `clang-format` via `./cmd.sh format`
+- Add comments for classes and functions
+
+## Namespaces
+
 - Namespaces are used to organize code into logical units. The structure of namespaces should
   reflect the project's directory structure, e.g.
   `src/some/dir` directory -> `TorustiqCli::Some::Dir`
-- Format code by invocation of `clang-format` via `./cmd.sh format`
-- Add comments for classes and functions
+- When using `std` namespace, avoid `std::` prefix; use `using namespace std;` instead
 
 ### CMakeLists.txt
 
