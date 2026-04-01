@@ -20,11 +20,23 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 find_package(CLI11 REQUIRED)
 find_package(yaml-cpp REQUIRED)
 
+# SDK library
+find_path(TORUSTIQ_SDK_INCLUDE_DIR
+    NAMES torustiq_sdk/typedefs.h
+    PATHS ${CMAKE_CURRENT_SOURCE_DIR}/../torustiq-cpp-lib-sdk/include
+    ENV TORUSTIQ_SDK_DIR
+    REQUIRED
+)
+
+add_library(torustiq_sdk INTERFACE)
+target_include_directories(torustiq_sdk INTERFACE ${TORUSTIQ_SDK_INCLUDE_DIR})
+
 file(GLOB_RECURSE SOURCES "src/*.cpp")
 add_executable(${APP_NAME_LOWERCASE} ${SOURCES})
 
 target_include_directories(${APP_NAME_LOWERCASE} PRIVATE src)
 target_link_libraries(${APP_NAME_LOWERCASE} PUBLIC yaml-cpp::yaml-cpp)
+target_link_libraries(${APP_NAME_LOWERCASE} PRIVATE torustiq_sdk)
 
 add_compile_definitions(APP_NAME="${APP_NAME}")
 add_compile_definitions(APP_VERSION="${APP_VERSION}")

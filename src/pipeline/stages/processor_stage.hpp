@@ -1,5 +1,5 @@
-#ifndef _TORUSTIQ_CLI_PIPE_STAGES_PROCESSOR_STAGE_H_
-#define _TORUSTIQ_CLI_PIPE_STAGES_PROCESSOR_STAGE_H_
+#ifndef _TORUSTIQ_CLI_PIPELINE_STAGES_PROCESSOR_STAGE_H_
+#define _TORUSTIQ_CLI_PIPELINE_STAGES_PROCESSOR_STAGE_H_
 
 #include "abstract_stage.hpp"
 
@@ -20,4 +20,4 @@ class ProcessorStage : public AbstractStage {
 }  // namespace Pipeline
 }  // namespace TorustiqCli
 
-#endif  // _TORUSTIQ_CLI_PIPE_STAGES_PROCESSOR_STAGE_H_
+#endif  // _TORUSTIQ_CLI_PIPELINE_STAGES_PROCESSOR_STAGE_H_

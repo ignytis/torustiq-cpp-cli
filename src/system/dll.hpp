@@ -18,9 +18,9 @@ namespace TorustiqCli {
 namespace System {
 
 #ifdef _WIN32
-constexpr const char* kLibExt = ".dll";
+constexpr const char* kLibFileExtension = ".dll";
 #else
-constexpr const char* kLibExt = ".so";
+constexpr const char* kLibFileExtension = ".so";
 #endif
 
 /**

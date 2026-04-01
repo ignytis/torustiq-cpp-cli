@@ -1,5 +1,5 @@
-#ifndef _TORUSTIQ_CLI_PIPE_PIPELINE_H_
-#define _TORUSTIQ_CLI_PIPE_PIPELINE_H_
+#ifndef _TORUSTIQ_CLI_PIPELINE_PIPELINE_H_
+#define _TORUSTIQ_CLI_PIPELINE_PIPELINE_H_
 
 #include <string>
 #include <unordered_set>
@@ -21,8 +21,7 @@ class Pipeline {
      * by position: first = source, last = sink, middle = processors.
      * @param module_dir Path to directory containing plugin libraries to load
      */
-    Pipeline(const Typedefs::Pipeline::PipelineDefinition& def,
-             const string& module_dir);
+    Pipeline(const Typedefs::Pipeline::PipelineDefinition& def);
 
     /** Returns a set of handlers which are in use by pipeline */
     unordered_set<string> getHandlersInUse();
@@ -44,4 +43,4 @@ class Pipeline {
 }  // namespace Pipeline
 }  // namespace TorustiqCli
 
-#endif  // _TORUSTIQ_CLI_PIPE_PIPELINE_H_
+#endif  // _TORUSTIQ_CLI_PIPELINE_PIPELINE_H_
