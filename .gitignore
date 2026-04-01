@@ -72,3 +72,4 @@ _deps
 CMakeUserPresets.json
 
 .cache
+.aider*

@@ -14,6 +14,7 @@ vector<StagePlugin> TorustiqCli::Plugins::Builtin::GetBuiltinPlugins() {
 
     plugins.push_back(StagePlugin(StagePluginConstructorArgs{.super_args{
         .init_fn_ptr = TorustiqCli::Plugins::Builtin::Stdio::Init,
+        .get_info_fn_ptr = TorustiqCli::Plugins::Builtin::Stdio::GetPluginInfo,
     }}));
 
     return plugins;
