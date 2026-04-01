@@ -8,9 +8,15 @@
 namespace TorustiqCli {
 namespace Plugins {
 
-/** A class for stage plugin */
-class StagePlugin : public AbstractPlugin {};
+struct StagePluginConstructorArgs {
+    AbstractPluginConstructorArgs super_args;
+};
 
+/** A class for stage plugin */
+class StagePlugin : public AbstractPlugin {
+   public:
+    StagePlugin(StagePluginConstructorArgs args);
+};
 }  // namespace Plugins
 }  // namespace TorustiqCli
 

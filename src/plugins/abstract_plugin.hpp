@@ -6,8 +6,15 @@
 namespace TorustiqCli {
 namespace Plugins {
 
+struct AbstractPluginConstructorArgs {
+    TorustiqPluginInitFnPtr init_fn_ptr;
+};
+
 /** Abstract base class for plugins */
 class AbstractPlugin {
+   public:
+    AbstractPlugin(AbstractPluginConstructorArgs args);
+
    private:
     TorustiqPluginInitFnPtr InitPtr;
 };

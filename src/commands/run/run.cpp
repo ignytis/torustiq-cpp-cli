@@ -7,6 +7,8 @@
 #include <unordered_set>
 
 #include "../../pipeline/pipeline.hpp"
+#include "../../plugins/builtin/factory.hpp"
+#include "../../plugins/stage_plugin.hpp"
 #include "../../system/dll.hpp"
 #include "../../typedefs/pipeline/pipeline.hpp"
 
@@ -35,6 +37,10 @@ void RunCommand::run() {
     for (const string& handler : handlers) {
         cout << "\t" << handler << endl;
     }
+
+    // Format a set of plugins. Start with builtins
+    vector<StagePlugin> plugins =
+        TorustiqCli::Plugins::Builtin::GetBuiltinPlugins();
 
     // TODO: implement plugins here
     for (const filesystem::directory_entry& entry :

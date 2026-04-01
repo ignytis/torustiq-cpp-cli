@@ -1,5 +1,5 @@
-#ifndef _TORUSTIQ_CLI_PLUGINS_ABSTRACT_PLUGIN_H_
-#define _TORUSTIQ_CLI_PLUGINS_ABSTRACT_PLUGIN_H_
+#ifndef _TORUSTIQ_CLI_PLUGINS_BUILTIN_STDIO_H_
+#define _TORUSTIQ_CLI_PLUGINS_BUILTIN_STDIO_H_
 
 #include <torustiq_sdk/typedefs.h>
 
@@ -9,6 +9,8 @@ namespace Builtin {
 namespace Stdio {
 
 const TorustiqPluginInfo GetPluginInfo();
+
+void Init();
 
 }  // namespace Stdio
 }  // namespace Builtin

@@ -1,9 +1,10 @@
 #include "stdio.hpp"
 
-const TorustiqPluginInfo GetPluginInfo() {
+const TorustiqPluginInfo TorustiqCli::Plugins::Builtin::Stdio::GetPluginInfo() {
     return TorustiqPluginInfo{
-        .api_version = 1,
         .id = "stdio",
         .name = "Standard IO Plugin",
     };
 }
+
+void TorustiqCli::Plugins::Builtin::Stdio::Init() {}
