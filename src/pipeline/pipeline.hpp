@@ -5,6 +5,7 @@
 #include <unordered_set>
 #include <vector>
 
+#include "../plugins/stage_plugin.hpp"
 #include "../typedefs/pipeline/pipeline.hpp"
 #include "stages/abstract_stage.hpp"
 
@@ -25,6 +26,9 @@ class Pipeline {
 
     /** Returns a set of handlers which are in use by pipeline */
     unordered_set<string> getHandlersInUse();
+
+    /** Sets plugins which are used by pipeline. Injects plugins to stages */
+    void setPlugins(vector<TorustiqCli::Plugins::StagePlugin>& plugins);
 
     /**
      * Initializes stages by calling the initialization method in for each stage

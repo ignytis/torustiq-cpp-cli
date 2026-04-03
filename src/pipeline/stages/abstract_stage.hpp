@@ -3,9 +3,12 @@
 
 #include <string>
 
+#include "../../plugins/stage_plugin.hpp"
 #include "../../typedefs/pipeline/stage.hpp"
 
 using namespace std;
+
+using TorustiqCli::Plugins::StagePlugin;
 
 namespace TorustiqCli {
 namespace Pipeline {
@@ -17,10 +20,14 @@ class AbstractStage {
     string name;
     string handlerId;
 
+    StagePlugin* plugin = nullptr;
+
     explicit AbstractStage(
-        const TorustiqCli::Typedefs::Pipeline::PipelineStageDefinition& def)
-        : name(def.name), handlerId(def.handler) {}
+        const TorustiqCli::Typedefs::Pipeline::PipelineStageDefinition& def);
     virtual ~AbstractStage() = default;
+
+    /** Initializes a stage */
+    virtual void init() {}
 };
 
 }  // namespace Stages

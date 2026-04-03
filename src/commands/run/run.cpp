@@ -64,5 +64,8 @@ void RunCommand::run() {
         plugin.init();
     }
 
+    pipeline.setPlugins(plugins);
+    pipeline.initStages();
+
     pipeline.start();
 }

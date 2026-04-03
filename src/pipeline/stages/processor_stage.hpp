@@ -12,8 +12,7 @@ namespace Stages {
 class ProcessorStage : public AbstractStage {
    public:
     explicit ProcessorStage(
-        const TorustiqCli::Typedefs::Pipeline::PipelineStageDefinition& def)
-        : AbstractStage(def) {}
+        const TorustiqCli::Typedefs::Pipeline::PipelineStageDefinition& def);
 };
 
 }  // namespace Stages

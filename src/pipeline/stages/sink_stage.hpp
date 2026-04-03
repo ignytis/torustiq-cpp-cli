@@ -3,6 +3,8 @@
 
 #include "abstract_stage.hpp"
 
+using TorustiqCli::Typedefs::Pipeline::PipelineStageDefinition;
+
 namespace TorustiqCli {
 namespace Pipeline {
 namespace Stages {
@@ -11,9 +13,7 @@ namespace Stages {
  * passing it further */
 class SinkStage : public AbstractStage {
    public:
-    explicit SinkStage(
-        const TorustiqCli::Typedefs::Pipeline::PipelineStageDefinition& def)
-        : AbstractStage(def) {}
+    explicit SinkStage(const PipelineStageDefinition& def);
 };
 
 }  // namespace Stages

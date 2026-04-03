@@ -44,6 +44,21 @@ unordered_set<string> Pipeline::getHandlersInUse() {
            std::ranges::to<unordered_set<string>>();
 }
 
-void Pipeline::initStages() {}
+void Pipeline::setPlugins(vector<TorustiqCli::Plugins::StagePlugin>& plugins) {
+    for (Stages::AbstractStage* stage : stages) {
+        for (TorustiqCli::Plugins::StagePlugin& plugin : plugins) {
+            if (stage->handlerId == plugin.GetId()) {
+                stage->plugin = &plugin;
+                break;
+            }
+        }
+    }
+}
+
+void Pipeline::initStages() {
+    for (Stages::AbstractStage* stage : stages) {
+        stage->init();
+    }
+}
 
 void Pipeline::start() { std::cout << "Pipeline started" << std::endl; }
