@@ -6,6 +6,10 @@
 #include <map>
 #include <string>
 
+using namespace std;
+
+typedef map<string, string> ConfigKV;
+
 namespace TorustiqCli {
 namespace Typedefs {
 namespace Pipeline {
@@ -13,9 +17,9 @@ namespace Pipeline {
 /** Represents a single stage in a pipeline definition */
 class PipelineStageDefinition {
    public:
-    std::string name;
-    std::string handler;
-    std::map<std::string, std::string> config;
+    string name;
+    string handler;
+    ConfigKV config;
 };
 
 }  // namespace Pipeline
@@ -31,8 +35,7 @@ struct convert<PipelineStageDefinition> {
         Node node;
         node["name"] = stage.name;
         node["handler"] = stage.handler;
-        for (const std::pair<const std::string, std::string>& kv :
-             stage.config) {
+        for (const pair<const string, string>& kv : stage.config) {
             node["config"][kv.first] = kv.second;
         }
         return node;
@@ -42,13 +45,12 @@ struct convert<PipelineStageDefinition> {
         if (!node.IsMap()) {
             return false;
         }
-        stage.name = node["name"].as<std::string>();
-        stage.handler = node["handler"].as<std::string>();
+        stage.name = node["name"].as<string>();
+        stage.handler = node["handler"].as<string>();
         if (node["config"]) {
             for (YAML::const_iterator it = node["config"].begin();
                  it != node["config"].end(); ++it) {
-                stage.config[it->first.as<std::string>()] =
-                    it->second.as<std::string>();
+                stage.config[it->first.as<string>()] = it->second.as<string>();
             }
         }
         return true;

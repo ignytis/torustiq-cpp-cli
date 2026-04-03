@@ -4,4 +4,4 @@ using TorustiqCli::Pipeline::Stages::AbstractStage;
 
 AbstractStage::AbstractStage(
     const TorustiqCli::Typedefs::Pipeline::PipelineStageDefinition& def)
-    : name(def.name), handlerId(def.handler) {}
+    : name(def.name), handlerId(def.handler), config(def.config) {}

@@ -21,6 +21,7 @@ class AbstractStage {
     string handlerId;
 
     StagePlugin* plugin = nullptr;
+    ConfigKV config;
 
     explicit AbstractStage(
         const TorustiqCli::Typedefs::Pipeline::PipelineStageDefinition& def);
