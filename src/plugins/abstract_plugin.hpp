@@ -1,9 +1,9 @@
 #ifndef _TORUSTIQ_CLI_PLUGINS_ABSTRACT_PLUGIN_H_
 #define _TORUSTIQ_CLI_PLUGINS_ABSTRACT_PLUGIN_H_
 
-#include <string>
-
 #include <torustiq_sdk/typedefs.h>
+
+#include <string>
 
 using namespace std;
 
@@ -20,8 +20,10 @@ class AbstractPlugin {
    public:
     AbstractPlugin(AbstractPluginConstructorArgs args);
 
-    string GetId();
-    string GetName();
+    void init();
+
+    string GetId() const;
+    string GetName() const;
 
    private:
     TorustiqPluginInitFnPtr InitPtr;

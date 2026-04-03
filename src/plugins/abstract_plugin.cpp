@@ -7,10 +7,8 @@ AbstractPlugin::AbstractPlugin(AbstractPluginConstructorArgs args) {
     GetInfoPtr = args.get_info_fn_ptr;
 }
 
-string AbstractPlugin::GetId() {
-    return GetInfoPtr().id;
-}
+void AbstractPlugin::init() { InitPtr(); }
 
-string AbstractPlugin::GetName() {
-    return GetInfoPtr().name;
-}
+string AbstractPlugin::GetId() const { return GetInfoPtr().id; }
+
+string AbstractPlugin::GetName() const { return GetInfoPtr().name; }

@@ -4,7 +4,9 @@
 
 #include <filesystem>
 #include <iostream>
+#include <ranges>
 #include <unordered_set>
+#include <vector>
 
 #include "../../pipeline/pipeline.hpp"
 #include "../../plugins/builtin/factory.hpp"
@@ -13,6 +15,7 @@
 #include "../../typedefs/pipeline/pipeline.hpp"
 
 using namespace std;
+using namespace std::ranges;
 
 using TorustiqCli::Commands::Run::RunCommand;
 using TorustiqCli::Pipeline::Pipeline;
@@ -39,7 +42,7 @@ void RunCommand::run() {
     }
 
     // Format a set of plugins. Start with builtins
-    vector<StagePlugin> plugins =
+    vector<StagePlugin> plugins_builtin =
         TorustiqCli::Plugins::Builtin::GetBuiltinPlugins();
 
     // TODO: implement plugins here
@@ -49,6 +52,16 @@ void RunCommand::run() {
             DynamicLibrary lib = DynamicLibrary(entry.path().string());
             // lib.get("init");
         }
+    }
+
+    vector<StagePlugin> plugins =
+        plugins_builtin | views::filter([&handlers](const StagePlugin& plugin) {
+            return handlers.contains(plugin.GetId());
+        }) |
+        to<vector<StagePlugin>>();
+
+    for (StagePlugin& plugin : plugins) {
+        plugin.init();
     }
 
     pipeline.start();

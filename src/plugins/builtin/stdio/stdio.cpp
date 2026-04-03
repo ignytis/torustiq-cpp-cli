@@ -7,4 +7,5 @@ const TorustiqPluginInfo TorustiqCli::Plugins::Builtin::Stdio::GetPluginInfo() {
     };
 }
 
+// no action needed on initialization
 void TorustiqCli::Plugins::Builtin::Stdio::Init() {}
