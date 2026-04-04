@@ -3,11 +3,12 @@
 ## General instructions
 
 - CMake + GNU Make are used to build the project
-- The compiled binary `torustiq-cli` is located in `build` directory
+- In Linux, the compiled binary `torustiq` is located in `build` directory
 
 ## Libraries in use
 
 - C11
+- yaml-cpp
 
 ## Project structure
 
@@ -16,13 +17,16 @@
 ## Coding style
 
 - Use the Google C++ Style Guide
-- Include guards in header files have a `_H_` suffix and include a path to header file relatively
-  to `src` directory. Example: `src/dir/subdir/myfile.hpp` -> `_TORUSTIQ_CLI_DIR_SUBDIR_MYFILE_H_`
+- Prefer modern C++ standard (C++23) features if they are compatible
+  with current versions of Linux and Windows compilers
 - Prefer ternary operators instead of if-else blocks with single statements
 - Return early if the whole remaining code inside function is if-else statement
 - Prefer explicit type declaration over `auto` keyword
 - Format code by invocation of `clang-format` via `./cmd.sh format`
 - Add comments for classes and functions
+- Avoid using exceptions. For critical errors print the error message to stdout
+  and exit with non-zero status code
+
 
 ## Namespaces
 
@@ -37,6 +41,8 @@
 
 ### `#include` statements
 
+- Include guards in header files have a `_H_` suffix and include a path to header file relatively
+  to `src` directory. Example: `src/dir/subdir/myfile.hpp` -> `_TORUSTIQ_CLI_DIR_SUBDIR_MYFILE_H_`
 - Group the `#include` statements, adding an empty line between each group:
   - for `*.cpp` files the corresponding `*.hpp` file is first
   - standard library includes, like `#include <iostream>`

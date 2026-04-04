@@ -1,7 +1,7 @@
 #ifndef _TORUSTIQ_CLI_SYSTEM_DLL_H_
 #define _TORUSTIQ_CLI_SYSTEM_DLL_H_
 
-#include <stdexcept>
+
 #include <string>
 
 #ifdef _WIN32
@@ -50,7 +50,8 @@ class DynamicLibrary {
         handle_ = dlopen(full_name.c_str(), RTLD_NOW | RTLD_LOCAL);
 #endif
         if (!handle_) {
-            throw runtime_error("Failed to load library: " + name);
+            cerr << "Failed to load library: " + name;
+            exit(1);
         }
     }
 
@@ -73,7 +74,8 @@ class DynamicLibrary {
         auto proc = dlsym(handle_, symbol.c_str());
 #endif
         if (!proc) {
-            throw runtime_error("Symbol not found: " + symbol);
+            cerr << "Symbol not found: " + symbol;
+            exit(1);
         }
         return reinterpret_cast<Func>(proc);
     }
