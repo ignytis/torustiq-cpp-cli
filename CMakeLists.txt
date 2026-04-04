@@ -18,6 +18,7 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "build")
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 find_package(CLI11 REQUIRED)
+find_package(spdlog REQUIRED)
 find_package(yaml-cpp REQUIRED)
 
 # SDK library
@@ -35,8 +36,9 @@ file(GLOB_RECURSE SOURCES "src/*.cpp")
 add_executable(${APP_NAME_LOWERCASE} ${SOURCES})
 
 target_include_directories(${APP_NAME_LOWERCASE} PRIVATE src)
-target_link_libraries(${APP_NAME_LOWERCASE} PRIVATE yaml-cpp::yaml-cpp)
 target_link_libraries(${APP_NAME_LOWERCASE} PRIVATE CLI11::CLI11)
+target_link_libraries(${APP_NAME_LOWERCASE} PRIVATE spdlog::spdlog)
+target_link_libraries(${APP_NAME_LOWERCASE} PRIVATE yaml-cpp::yaml-cpp)
 target_link_libraries(${APP_NAME_LOWERCASE} PRIVATE torustiq_sdk)
 
 add_compile_definitions(APP_NAME="${APP_NAME}")

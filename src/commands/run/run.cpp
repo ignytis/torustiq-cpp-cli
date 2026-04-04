@@ -1,9 +1,9 @@
 #include "run.hpp"
 
+#include <spdlog/spdlog.h>
 #include <yaml-cpp/yaml.h>
 
 #include <filesystem>
-#include <iostream>
 #include <ranges>
 #include <unordered_set>
 #include <vector>
@@ -27,18 +27,17 @@ RunCommand::RunCommand(Configuration* config, string pipeline_path)
     : config(config), pipeline_path(pipeline_path) {}
 
 void RunCommand::run() {
-    cout << "Executing a pipeline from file: " << pipeline_path << endl
-         << "Config dir: " << config->moduleDir << endl;
+    spdlog::info("Executing a pipeline from file: {}", pipeline_path);
 
     PipelineDefinition pipeDef =
         YAML::LoadFile(pipeline_path).as<PipelineDefinition>();
     Pipeline::Pipeline pipeline = Pipeline::Pipeline(pipeDef);
-    cout << "Pipeline name: " << pipeDef.name << endl;
+    spdlog::debug("Pipeline name: {}", pipeDef.name);
 
     unordered_set<string> handlers = pipeline.getHandlersInUse();
-    cout << "Pipeline handlers in use:" << endl;
+    spdlog::debug("Pipeline handlers in use:");
     for (const string& handler : handlers) {
-        cout << "\t" << handler << endl;
+        spdlog::debug("- {}", handler);
     }
 
     // Format a set of plugins. Start with builtins

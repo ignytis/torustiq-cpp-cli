@@ -1,5 +1,7 @@
 #include "env.hpp"
 
+#include <spdlog/spdlog.h>
+
 #include <cstdlib>
 #include <filesystem>
 #include <iostream>
@@ -26,14 +28,16 @@ string TorustiqCli::System::getAppHome(string appName) {
     if (appData) {
         return string(appData) + "\\" + appName;
     }
-    throw runtime_error("APPDATA environment variable not set");
+    spdlog::error("APPDATA environment variable not set");
+    exit(1);
 #elif __APPLE__
     // macOS: $HOME/Library/Application Support/AppName
     const char* home = getenv("HOME");
     if (home) {
         return string(home) + "/Library/Application Support/" + appName;
     }
-    throw runtime_error("HOME environment variable not set");
+    spdlog::error("HOME environment variable not set");
+    exit(1);
 #else
     // Linux: $HOME/.config/appname (XDG standard) or $HOME/.appname
     const char* xdgConfig = getenv("XDG_CONFIG_HOME");
@@ -45,6 +49,7 @@ string TorustiqCli::System::getAppHome(string appName) {
     if (home) {
         return string(home) + "/.config/" + appName;
     }
-    throw runtime_error("HOME environment variable not set");
+    spdlog::error("HOME environment variable not set");
+    exit(1);
 #endif
 }

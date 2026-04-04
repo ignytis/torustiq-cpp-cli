@@ -1,3 +1,5 @@
+#include <spdlog/cfg/env.h>
+#include <spdlog/spdlog.h>
 #include <yaml-cpp/yaml.h>
 
 #include <CLI/CLI.hpp>
@@ -15,6 +17,9 @@ using TorustiqCli::Typedefs::Configuration::Configuration;
 
 int main(int argc, char* argv[]) {
     CLI::App app{APP_DESCRIPTION};
+    spdlog::cfg::load_env_levels("TORUSTIQ_LOG_LEVEL");
+
+    spdlog::debug("Application started.");
 
     CLI::App* sub_run = app.add_subcommand("run", "Runs a pipeline");
     string sub_run_option_pipeline_path;

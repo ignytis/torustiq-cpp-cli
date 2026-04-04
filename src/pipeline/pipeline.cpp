@@ -1,6 +1,7 @@
 #include "pipeline.hpp"
 
-#include <iostream>
+#include <spdlog/spdlog.h>
+
 #include <ranges>
 #include <stdexcept>
 #include <string>
@@ -19,8 +20,8 @@ using namespace TorustiqCli::Typedefs::Pipeline;
 Pipeline::Pipeline(const PipelineDefinition& def) {
     size_t count = def.stages.size();
     if (count < 2) {
-        throw invalid_argument(
-            "Pipeline must have at least a source and a sink stage");
+        spdlog::error("Pipeline must have at least a source and a sink stage");
+        exit(1);
     }
     stages.reserve(count);
 
@@ -61,4 +62,4 @@ void Pipeline::initStages() {
     }
 }
 
-void Pipeline::start() { cout << "Pipeline started" << endl; }
+void Pipeline::start() { spdlog::debug("Pipeline started"); }
