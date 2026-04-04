@@ -6,8 +6,6 @@
 #include <map>
 #include <string>
 
-using namespace std;
-
 typedef map<string, string> ConfigKV;
 
 namespace TorustiqCli {

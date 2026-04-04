@@ -15,8 +15,8 @@ namespace Pipeline {
 /** Represents a pipeline definition loaded from a YAML file */
 class PipelineDefinition {
    public:
-    std::string name;
-    std::vector<PipelineStageDefinition> stages;
+    string name;
+    vector<PipelineStageDefinition> stages;
 };
 
 }  // namespace Pipeline
@@ -41,10 +41,10 @@ struct convert<PipelineDefinition> {
         if (!node.IsMap()) {
             return false;
         }
-        pipeline.name = node["name"].as<std::string>();
+        pipeline.name = node["name"].as<string>();
         if (node["stages"]) {
             pipeline.stages =
-                node["stages"].as<std::vector<PipelineStageDefinition>>();
+                node["stages"].as<vector<PipelineStageDefinition>>();
         }
         return true;
     }

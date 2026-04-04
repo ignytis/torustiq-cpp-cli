@@ -11,6 +11,7 @@
 #include "stages/source_stage.hpp"
 
 using namespace std;
+using namespace std::ranges;
 
 using namespace TorustiqCli::Pipeline;
 using namespace TorustiqCli::Typedefs::Pipeline;
@@ -18,7 +19,7 @@ using namespace TorustiqCli::Typedefs::Pipeline;
 Pipeline::Pipeline(const PipelineDefinition& def) {
     size_t count = def.stages.size();
     if (count < 2) {
-        throw std::invalid_argument(
+        throw invalid_argument(
             "Pipeline must have at least a source and a sink stage");
     }
     stages.reserve(count);
@@ -37,11 +38,10 @@ Pipeline::Pipeline(const PipelineDefinition& def) {
 }
 
 unordered_set<string> Pipeline::getHandlersInUse() {
-    return stages |
-           std::views::transform([](const Stages::AbstractStage* stage) {
+    return stages | views::transform([](const Stages::AbstractStage* stage) {
                return stage->handlerId;
            }) |
-           std::ranges::to<unordered_set<string>>();
+           ranges::to<unordered_set<string>>();
 }
 
 void Pipeline::setPlugins(vector<TorustiqCli::Plugins::StagePlugin>& plugins) {
@@ -61,4 +61,4 @@ void Pipeline::initStages() {
     }
 }
 
-void Pipeline::start() { std::cout << "Pipeline started" << std::endl; }
+void Pipeline::start() { cout << "Pipeline started" << endl; }

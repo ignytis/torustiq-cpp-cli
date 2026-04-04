@@ -1,7 +1,7 @@
 #ifndef _TORUSTIQ_CLI_PLUGINS_STAGE_PLUGIN_H_
 #define _TORUSTIQ_CLI_PLUGINS_STAGE_PLUGIN_H_
 
-// #include <torustiq_sdk/typedefs.h>
+// #include <torustiq_sdk/plugins/typedefs.h>
 
 #include "abstract_plugin.hpp"
 

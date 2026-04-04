@@ -10,8 +10,6 @@
 
 using namespace TorustiqCli::System;
 
-using namespace std;
-
 using TorustiqCli::Commands::Run::RunCommand;
 using TorustiqCli::Typedefs::Configuration::Configuration;
 

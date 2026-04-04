@@ -35,15 +35,26 @@ file(GLOB_RECURSE SOURCES "src/*.cpp")
 add_executable(${APP_NAME_LOWERCASE} ${SOURCES})
 
 target_include_directories(${APP_NAME_LOWERCASE} PRIVATE src)
-target_link_libraries(${APP_NAME_LOWERCASE} PUBLIC yaml-cpp::yaml-cpp)
+target_link_libraries(${APP_NAME_LOWERCASE} PRIVATE yaml-cpp::yaml-cpp)
+target_link_libraries(${APP_NAME_LOWERCASE} PRIVATE CLI11::CLI11)
 target_link_libraries(${APP_NAME_LOWERCASE} PRIVATE torustiq_sdk)
 
 add_compile_definitions(APP_NAME="${APP_NAME}")
 add_compile_definitions(APP_VERSION="${APP_VERSION}")
 add_compile_definitions(APP_DESCRIPTION="${APP_DESCRIPTION}")
 
-set_target_properties(${APP_NAME_LOWERCASE} PROPERTIES
-    WIN32_EXECUTABLE ON
-    MACOSX_BUNDLE ON
-)
+# Platform-specific configuration
+if (WIN32)
+    # To avoid type collistion with std::byte
+    # https://stackoverflow.com/a/58060367
+    add_compile_definitions(_HAS_STD_BYTE=0)
 
+    set_target_properties(${APP_NAME_LOWERCASE} PROPERTIES
+        WIN32_EXECUTABLE ON
+        LINK_FLAGS /SUBSYSTEM:CONSOLE
+    )
+elseif(APPLE)
+    set_target_properties(${APP_NAME_LOWERCASE} PROPERTIES
+        MACOSX_BUNDLE ON
+    )
+endif()

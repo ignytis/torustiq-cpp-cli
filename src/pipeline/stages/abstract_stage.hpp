@@ -6,8 +6,6 @@
 #include "../../plugins/stage_plugin.hpp"
 #include "../../typedefs/pipeline/stage.hpp"
 
-using namespace std;
-
 using TorustiqCli::Plugins::StagePlugin;
 
 namespace TorustiqCli {

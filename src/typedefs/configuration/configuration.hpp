@@ -5,6 +5,8 @@
 
 #include <string>
 
+using namespace std;
+
 namespace TorustiqCli {
 namespace Typedefs {
 namespace Configuration {
@@ -12,7 +14,7 @@ namespace Configuration {
 /** Main configuration class */
 class Configuration {
    public:
-    std::string moduleDir;
+    string moduleDir;
 };
 
 }  // namespace Configuration
@@ -34,7 +36,7 @@ struct convert<Configuration> {
         if (!node.IsMap()) {
             return false;
         }
-        cfg.moduleDir = node["module_dir"].as<std::string>();
+        cfg.moduleDir = node["module_dir"].as<string>();
         return true;
     }
 };

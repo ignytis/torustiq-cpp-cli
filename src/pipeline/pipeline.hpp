@@ -9,8 +9,6 @@
 #include "../typedefs/pipeline/pipeline.hpp"
 #include "stages/abstract_stage.hpp"
 
-using namespace std;
-
 namespace TorustiqCli {
 namespace Pipeline {
 

@@ -37,20 +37,20 @@ constexpr const char* kLibFileExtension = ".so";
  */
 class DynamicLibrary {
    public:
-    explicit DynamicLibrary(const std::string& name) {
+    explicit DynamicLibrary(const string& name) {
 #ifdef _WIN32
         handle_ = LoadLibraryA(name.c_str());
 #else
         // On Unix-like, try with and without "lib" + ".so" for convenience
-        std::string full_name = name;
-        if (full_name.find('/') == std::string::npos &&
-            full_name.find('.') == std::string::npos) {
+        string full_name = name;
+        if (full_name.find('/') == string::npos &&
+            full_name.find('.') == string::npos) {
             full_name = "lib" + full_name + ".so";
         }
         handle_ = dlopen(full_name.c_str(), RTLD_NOW | RTLD_LOCAL);
 #endif
         if (!handle_) {
-            throw std::runtime_error("Failed to load library: " + name);
+            throw runtime_error("Failed to load library: " + name);
         }
     }
 
@@ -66,14 +66,14 @@ class DynamicLibrary {
 
     // Get function pointer (use extern "C" in the library for C linkage)
     template <typename Func>
-    Func get(const std::string& symbol) const {
+    Func get(const string& symbol) const {
 #ifdef _WIN32
         auto proc = GetProcAddress(handle_, symbol.c_str());
 #else
         auto proc = dlsym(handle_, symbol.c_str());
 #endif
         if (!proc) {
-            throw std::runtime_error("Symbol not found: " + symbol);
+            throw runtime_error("Symbol not found: " + symbol);
         }
         return reinterpret_cast<Func>(proc);
     }

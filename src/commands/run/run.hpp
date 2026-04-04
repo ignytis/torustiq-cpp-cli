@@ -6,6 +6,8 @@
 #include "../../typedefs/configuration/configuration.hpp"
 #include "../abstract.hpp"
 
+using namespace std;
+
 namespace TorustiqCli {
 namespace Commands {
 namespace Run {
@@ -18,10 +20,10 @@ using TorustiqCli::Typedefs::Configuration::Configuration;
 class RunCommand : public AbstractCommand {
    private:
     Configuration* config;
-    std::string pipeline_path;
+    string pipeline_path;
 
    public:
-    RunCommand(Configuration* config, std::string pipeline_path);
+    RunCommand(Configuration* config, string pipeline_path);
     void run();
 };
 
